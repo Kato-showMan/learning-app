@@ -1,0 +1,23 @@
+<h1>KATO no 学習記録</h1>
+<h4>
+  <a href="https://raise-tech.net/">RaiseTech</a>の受講記録や日々の学習を記録していきます!！
+</h4>
+
+<% @days.each do |day| %>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <%= day.title %>
+      <div class="buttons">
+        <a href="/days/<%= day.id%>" data-method="delete">
+          <span class="glyphicon glyphicon-trash"></span>
+        </a>
+        <a href="/days/<%= day.id%>/edit">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+      </div>
+    </div>
+    <table class="table">
+      <%= day.body %>
+    </table>
+  </div>
+<% end %>

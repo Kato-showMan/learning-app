@@ -1,0 +1,12 @@
+<h3>新規学習記録</h3>
+<%= form_tag("/create") do %>
+  <div class="form-group">
+    <%= label_tag "form-title","タイトル:" %>
+    <%= text_field :days, :title, id:"form-title", class:"form-control",placeholder:"ざっくりと何をやったか" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag "form-body","内容:" %>
+    <%= text_area :days, :body, id:"form-body", class:"form-control", placeholder:"具体的な内容" %>
+  </div>
+  <%= submit_tag "作成", class:"btn btn-primary btn-lg" %>
+<% end %>

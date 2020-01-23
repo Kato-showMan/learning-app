@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KATO no 学習記録アプリ</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">KATO no 学習記録</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://twitter.com/luckyboy3614">Twitter</a></li>
+            <li><a href="/new">新規作成</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ログイン<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                    <% if user_signed_in? %>
+                       <a>ログイン中；<%= current_user.email %></a>
+                       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                    <% else %>
+                      <a>現在ログインしておりません</a>
+                      <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+                      <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+                    <% end %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
